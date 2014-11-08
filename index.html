@@ -48,6 +48,22 @@
           					  <script>
           						// causes the Arduino to hang quite frequently (more often than Web_AjaxRGB.pde), probably due to the different event triggering the ajax requests
           							$(document).ready(function(){
+									
+										//get current position and disable associated button
+										$.get( "https://api.spark.io/v1/devices/54ff71066667515138502367/getpos?access_token=df4620a9780303eab8c3c101fe5086cf13f3b890", function( data ) {
+										  //alert(JSON.stringify(data));
+										  var pos = data.result;
+										  if(pos == 1){
+											$("#layout-radio-a").checkboxradio('disable');
+											} else {
+												$("#layout-radio-b").checkboxradio('disable');
+											}
+										});
+										
+										
+										
+										
+										
           								$("input[type='radio']").bind( 'change', function(event, ui) { 
           									jQuery.ajaxSetup({timeout: 110}); /*not to DDoS the Arduino, you might have to change this to some threshold value that fits your setup*/ 
           									var id = $(this).attr('id'); 
