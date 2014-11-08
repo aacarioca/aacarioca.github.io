@@ -56,12 +56,12 @@
           									if (id == 'layout-radio-a') 
           									{
           										//alert(id+' '+value); 
-          										$.post('/shutter', { direction: value, source: "webpage" } );
+          										$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 1, "access_token":"df4620a9780303eab8c3c101fe5086cf13f3b890"} );
           									}; 
           									if (id == 'layout-radio-b') 
           									{
           										//alert(id+' '+value); 
-          										$.post('/shutter', { direction: value, source: "webpage"  } );
+          										$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 2, "access_token":"df4620a9780303eab8c3c101fe5086cf13f3b890"});
           									}; 
           								});
           							});
