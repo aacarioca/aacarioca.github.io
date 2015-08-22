@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-<title>The Abax Project - Shutter Controler</title> 
+<title>Living Room Light Controller</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -15,12 +15,11 @@ $(document).ready(function() {
 </head> 
 <body> 
 
-<div data-role="page">
-
+<div data-role="page" data-theme="a">
+<!--
 	<div data-role="header" data-position="fixed" data-theme="b">
 		<h1>The Abax Project (Roller blinder)</h1>
 	</div>
-
 
 	<div class="ui-grid-solo" align="center">
 		<br />
@@ -31,10 +30,17 @@ $(document).ready(function() {
 		</div>
 	</div>
 
+-->
 
 	<div class="ui-grid-solo" align="center">
 		<form id="myForm">
 			<div class="ui-block-a">
+				<div data-role="fieldcontain">
+					<select name="slider" id="slider" data-role="slider">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select> 
+				</div>
 				<div data-role="controlgroup" data-type="horizontal" id="options" value="test" > <!-- class="ui-disabled" -->
 					<input class="radio" type="radio" name="position" id="layout-radio-a" data-icon="arrow-u" value="BACKWARD"  />
 					<label for="layout-radio-a" >Up</label>
@@ -43,13 +49,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			
-			<div data-role="fieldcontain">
-				<label for="slider">Select slider:</label>
-				<select name="slider" id="slider" data-role="slider">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select> 
-			</div>
+			
 		</form>
 	</div>
 <br />
