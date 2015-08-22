@@ -61,6 +61,9 @@ $(document).ready(function() {
 <script>
 // causes the Arduino to hang quite frequently (more often than Web_AjaxRGB.pde), probably due to the different event triggering the ajax requests
 $(document).ready(function(){
+
+
+
 	
 	//get current position and disable associated button
 	$.get( "https://api.spark.io/v1/devices/54ff71066667515138502367/getpos?access_token=3f3cf0a29c4570c292f8f4907e7484cfa33db72c", function( data ) {
@@ -80,20 +83,20 @@ $(document).ready(function(){
 		$("#slider").slider("option", "value", dur);
 	});
 	
-	$("input[type='radio']").bind( 'change', function(event, ui) { 
+	$("input[id='slider']").bind( 'change', function(event, ui) { 
 		jQuery.ajaxSetup({timeout: 110}); /*not to DDoS the Arduino, you might have to change this to some threshold value that fits your setup*/ 
 		var id = $(this).attr('id'); 
 		var value = $(this).val(); 
-		//alert(id+' '+value); 
+		alert(id+' '+value); 
 		if (id == 'layout-radio-a') 
 		{
-			//alert(id+' '+value); 
+			alert(id+' '+value); 
 			$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 1, "access_token":"3f3cf0a29c4570c292f8f4907e7484cfa33db72c"} );
 			$("#layout-radio-a").checkboxradio('disable');
 		}; 
 		if (id == 'layout-radio-b') 
 		{
-			//alert(id+' '+value); 
+			alert(id+' '+value); 
 			$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 2, "access_token":"3f3cf0a29c4570c292f8f4907e7484cfa33db72c"});
 			$("#layout-radio-b").checkboxradio('disable');
 		}; 
