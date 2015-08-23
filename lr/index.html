@@ -25,27 +25,32 @@ $(document).ready(function() {
 		<br />
 		<br />
 		<div class="ui-block-a" align="center">
-			<br /> <img src="http://abaxproject.appspot.com/images/abax_logo_medium.png" id="abaxLogo" /> <br />
+			<br /> <img src="https://lh3.googleusercontent.com/tzlo7xLCRfTGPg57ghrmFMk5JhHBHdpQEGMAY9HvPNTwCWE7PNxs48lOZvLl0Z0a58yPhUoZ19N0yhA=w1576-h679-rw" id="abaxLogo" /> <br />
 			<br />
 		</div>
 	</div>
-
 -->
 
-	<div class="ui-grid-solo" align="center">
+
+	<div class="ui-grid-solo" align="center"><br />
+		<br /><br />
+		<br /><br />
+		<br /><br />
+		<br /><br />
+		<br />
 		<form id="myForm">
 			<div class="ui-block-a">
-				<div data-role="fieldcontain">
+				<!--<div data-role="fieldcontain">
 					<select name="slider" id="slider" data-role="slider">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select> 
-				</div>
-				<div data-role="controlgroup" data-type="horizontal" id="options" value="test" > <!-- class="ui-disabled" -->
-					<input class="radio" type="radio" name="position" id="layout-radio-a" data-icon="arrow-u" value="BACKWARD"  />
-					<label for="layout-radio-a" >Up</label>
-					<input class="radio" type="radio" name="position" id="layout-radio-b" value="FORWARD"  />
-					<label for="layout-radio-b">Down</label>
+				</div> -->
+				<div data-role="controlgroup" data-type="horizontal" id="options" value="test" > 
+					<input class="radio" type="radio" name="position" id="layout-radio-a" data-icon="arrow-u" value="ON"  />
+					<label for="layout-radio-a" >On</label>
+					<input class="radio" type="radio" name="position" id="layout-radio-b" value="OFF"  />
+					<label for="layout-radio-b">Off</label>
 				</div>
 			</div>
 			
@@ -83,24 +88,26 @@ $(document).ready(function(){
 		$("#slider").slider("option", "value", dur);
 	});
 	
-	$("input[id='slider']").bind( 'change', function(event, ui) { 
+	$("input[type='radio']").bind( 'change', function(event, ui) { 
 		jQuery.ajaxSetup({timeout: 110}); /*not to DDoS the Arduino, you might have to change this to some threshold value that fits your setup*/ 
 		var id = $(this).attr('id'); 
 		var value = $(this).val(); 
-		alert(id+' '+value); 
-		if (id == 'layout-radio-a') 
+		//alert(id+' '+value); 
+		if (value == 'ON') 
 		{
-			alert(id+' '+value); 
-			$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 1, "access_token":"3f3cf0a29c4570c292f8f4907e7484cfa33db72c"} );
+			//alert(id+' '+value); 
+			$.post('https://api.spark.io/v1/devices/53ff70066667574810462067/setlamp', { "params" : 1, "access_token":"c4620c3ff14916ff081d7caeb6b669b409cfb0eb"} );
 			$("#layout-radio-a").checkboxradio('disable');
+			$("#layout-radio-b").checkboxradio('enable');
 		}; 
-		if (id == 'layout-radio-b') 
+		if (value == 'OFF') 
 		{
-			alert(id+' '+value); 
-			$.post('https://api.spark.io/v1/devices/54ff71066667515138502367/setpos', { "params" : 2, "access_token":"3f3cf0a29c4570c292f8f4907e7484cfa33db72c"});
+			//alert(id+' '+value); 
+			$.post('https://api.spark.io/v1/devices/53ff70066667574810462067/setlamp', { "params" : 0, "access_token":"c4620c3ff14916ff081d7caeb6b669b409cfb0eb"});
 			$("#layout-radio-b").checkboxradio('disable');
+			$("#layout-radio-a").checkboxradio('enable');
 		}; 
 	});
 });
 </script>
-</html>;
+</html>
